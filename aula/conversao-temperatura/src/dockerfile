@@ -1,0 +1,10 @@
+FROM node:16.15.0
+# Boas praticas, utilizar a tag da imagem, caso não vá testar algo da nova versão, exemplo:
+# FROM node: 16.15.0
+# criar um arquivo .dockerignore para não utilizar node_modules local
+WORKDIR /app
+COPY ./package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "server.js"]
